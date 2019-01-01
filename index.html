@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Last Words</title>
+    <style>
+        body {
+            height: 100%;
+            background-color: #333333;
+            color: white;
+        }
+        .tile {
+            width: 100px;
+            height: 100px;
+            border: 1px solid yellowgreen;
+            flex: 1;
+        }
+        .row {
+            display: flex;
+            flex-direction: row;
+        }
+        .wall {
+            outline: 2px solid dodgerblue;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+<body>
+    <div id="tiles">
+        <div class="row" v-for="row in rows">
+            <div class="tile" v-bind:class="{ wall: tile.w === 'X' }" v-for="tile in row">
+                <span>{{tile.x}}, {{tile.y}}</span><br>
+                <span>OT: {{tile.ot}}</span><br>
+                <span>w: {{tile.w}}</span><br>
+                <span>h: {{tile.h}}</span><br>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+    <script src="./bundle.js"></script>
+</body>
+</html>
