@@ -28,7 +28,7 @@
             overflow: hidden;
         }
         .tile {
-            height: 100px;
+            height: 60px;
             border-right: 1px solid var(--color-border);
             border-bottom: 1px solid var(--color-border);
             flex: 1;
@@ -53,7 +53,10 @@
             flex-direction: row;
         }
         .wall {
-            background-color: #552f2f;
+            color: #f17e7e;
+        }
+        .path {
+            background-color: #1a3324;
         }
     </style>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -61,22 +64,25 @@
 <body>
     <div class="container">
         <div class="tiles" id="tiles">
-            <div class="row" v-for="i in rows.length">
-                <div class="tile" v-bind:class="{ wall: tile.w === 'X' }" v-for="j in row">
+            <div class="row" v-for="row in rows">
+                <div class="tile" v-bind:class="{
+                    wall: tile.w === 'X',
+                    path: tile.path
+                }" v-for="tile in row">
                     <div class="tile-part">
-                        <span>{{tile.x}}, {{tile.y}}</span>
+                        <span>{{tile.x}}:{{tile.y}}</span>
                     </div>
                     <div class="tile-part" v-bind:class="{
                         target: tile.ot === 'T',
                         origin: tile.ot === 'O'
                     }">
-                        <span>OT: {{tile.ot}}</span>
+                        <span>{{tile.ot}}</span>
                     </div>
                     <div class="tile-part">
-                        <span>G: {{tile.g}}</span>
+                        <span>{{tile.g}}</span>
                     </div>
                     <div class="tile-part">
-                        <span>H: {{tile.h}}</span>
+                        <span>{{tile.h}}</span>
                     </div>
                 </div>
             </div>
