@@ -5,11 +5,19 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "browserify index.js -o bundle.js"
+    "compile": "browserify web/index.js -o web/bundle.js",
+    "start": "node server.js"
   },
   "author": "Andriy Yednarovych",
   "license": "ISC",
   "dependencies": {
-    "jquery": "^3.3.1"
+    "express": "^4.16.4",
+    "jquery": "^3.3.1",
+    "multer": "^1.4.1",
+    "socket.io": "^2.2.0",
+    "uws": "^10.148.1"
+  },
+  "devDependencies": {
+    "socket.io-client": "^2.2.0"
   }
 }
