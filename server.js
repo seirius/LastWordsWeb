@@ -32,6 +32,10 @@ const io = socket(server);
 io.on('connection', socket => {
     console.log('new user');
 
+    socket.on('kotlin-tiles', (args) => {
+        io.sockets.emit('vue-tiles', args)
+    });
+
 });
 
 app.post('/debug/a-star', upload.single('tiles'), (req, res) => {

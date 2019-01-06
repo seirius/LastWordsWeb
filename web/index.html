@@ -68,7 +68,7 @@
                 <div class="tile" v-bind:class="{
                     wall: tile.w === 'X',
                     path: tile.path
-                }" v-for="tile in row">
+                }" v-for="tile in row" v-on:click="tileClick(tile, $event)">
                     <div class="tile-part">
                         <span>{{tile.x}}:{{tile.y}}</span>
                     </div>

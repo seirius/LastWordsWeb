@@ -1,23 +1,37 @@
 const $ = require('jquery');
 const io = require('socket.io-client');
-const socket = io.connect('http://localhost:3000');
+const socket = io();
+
+socket.on('connect', s => {
+    console.log('socket connected');
+});
+
+socket.on('java-client', args => {
+    console.log('java-client', args);
+})
+
 
 const tiles = new Vue({
     el: '#tiles',
     data: function () {
-        getTiles().then(response => this.rows = response);
-        socket.on('new-tiles', (data) => {
-            getTiles().then(response => this.rows = response);
+        // getTiles().then(response => this.rows = response);
+        socket.on('vue-tiles', (data) => {
+            this.rows = data;
+            // getTiles().then(response => this.rows = response);
         });
-        socket.on('java-client', () => console.log('java-client-connected'));
-        socket.emit('new-tiles')
         return {
             rows: []
+        }
+    },
+    methods: {
+        tileClick: (tile, event) => {
+            socket.send('asfasf')
+            socket.emit('vue-to-java', 'hi')
         }
     }
 });
 
 
-function getTiles() {
-    return $.getJSON('tiles.json');
-}
+// function getTiles() {
+//     return $.getJSON('tiles.json');
+// }
