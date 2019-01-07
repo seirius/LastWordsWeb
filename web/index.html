@@ -64,19 +64,19 @@
 <body>
     <div class="container">
         <div class="tiles" id="tiles">
-            <div class="row" v-for="row in rows">
+            <div class="row" v-for="row in nodeMap.tileNodes">
                 <div class="tile" v-bind:class="{
-                    wall: tile.w === 'X',
+                    wall: tile.tileType === 'WALL',
                     path: tile.path
                 }" v-for="tile in row" v-on:click="tileClick(tile, $event)">
                     <div class="tile-part">
                         <span>{{tile.x}}:{{tile.y}}</span>
                     </div>
                     <div class="tile-part" v-bind:class="{
-                        target: tile.ot === 'T',
-                        origin: tile.ot === 'O'
+                        target: tile.target,
+                        origin: tile.origin
                     }">
-                        <span>{{tile.ot}}</span>
+                        <span></span>
                     </div>
                     <div class="tile-part">
                         <span>{{tile.g}}</span>

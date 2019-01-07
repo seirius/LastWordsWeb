@@ -33,7 +33,15 @@ io.on('connection', socket => {
     console.log('new user');
 
     socket.on('kotlin-tiles', (args) => {
-        io.sockets.emit('vue-tiles', args)
+        io.sockets.emit('vue-tiles', args);
+    });
+
+    socket.on('node-map', args => {
+        io.sockets.emit('node-map', args);
+    });
+
+    socket.on('entity-path', args => {
+        io.sockets.emit('entity-path', args);
     });
 
 });
